@@ -7,7 +7,7 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 else
     echo "you are root user. you can run this script"
-    dnf insall nginx -y
+    dnf install nginx -y
     if [ $? -eq 0 ]; then
         echo "nginx installed successfully"
     else
