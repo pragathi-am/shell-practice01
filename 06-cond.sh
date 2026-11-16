@@ -1,7 +1,7 @@
 #!/bin/bash
 
 n=$1
-if [$n -gt 10]
+if [ $n -gt 10]
 then
   echo "The number is greater than 10"
 else
