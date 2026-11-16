@@ -11,4 +11,5 @@ echo "The sum of $NUM1 and $NUM2 is: $sum"
 Fruits=("apple" "banana" "cherry")
 echo "The all fruits are : ${Fruits[@]} "
 echo "The first fruit is: ${Fruits[0]}"
-echo " The last fruit is: ${Fruits[${#Fruits[@]}-1]}"
+total_fruits=${#Fruits[@]}
+last_fruit_index=$((total_fruits - 1))
