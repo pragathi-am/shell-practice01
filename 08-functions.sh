@@ -18,7 +18,7 @@ validate(){
   fi
 }
 dnf install nginx -y &>>$LOG_FILE
-validate $? "nginx installation"
+validate $? "nginx installation" | tee -a $LOG_FILE
 
 dnf install mysql -y  &>>$LOG_FILE 
-validate $? "mysql installation"
+validate $? "mysql installation" | tee -a $LOG_FILE
