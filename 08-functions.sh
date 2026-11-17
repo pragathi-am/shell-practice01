@@ -6,7 +6,9 @@ if [ $USER_ID -ne 0 ]; then
     echo "you are not root user. please use root user to run this"
     exit 1
 fi
-echo "you are root user. you can run this script"
+LOG_FOLDER="/var/log/shell-scripts"
+LOG_FILE="/var/log/shell-scripts/$0.log"
+mkdir -p $LOG_FOLDER
 
 validate(){
   if [ $1 -eq 0 ]; then
@@ -15,8 +17,8 @@ validate(){
         echo "$2 failed"
   fi
 }
-dnf install nginx -y
+dnf install nginx -y &>>$LOG_FILE
 validate $? "nginx installation"
 
-dnf install mysql -y    
+dnf install mysql -y  &>>$LOG_FILE 
 validate $? "mysql installation"
