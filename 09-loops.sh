@@ -6,7 +6,6 @@ do
   if $i -eq 5
   then
     echo "Breaking the loop at $i"
-    exit 0  
   fi
 done
 echo " hi"
