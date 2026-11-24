@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# This script demonstrates the use of exit status in bash scripting.
 set -e #ERR
 trap 'echo "Error occurred at line $LINENO. command: $BASH_COMMAND"' ERR
+
 USER_ID=$(id -u)
 if [ $USER_ID -ne 0 ]; then 
     echo "you are not root user. please use root user to run this"

@@ -9,7 +9,7 @@ if [ $USER_ID -ne 0 ]; then
     exit 1
 fi
 LOG_FOLDER="/var/log/shell-scripts"
-LOG_FILE="/var/log/shell-scripts/$0.log"
+LOG_FILE="$LOG_FOLDER/$0.log"
 mkdir -p $LOG_FOLDER
 
 R='\e[31m'
@@ -20,15 +20,15 @@ B='\e[34m'
 
 validate(){
   if [ $1 -eq 0 ]; then
-        echo -e "$2 $G successfully"
+        echo -e "$2 $G successfully $N" | tee -a $LOG_FILE
   else
-        echo -e "$2 $R failed"
+        echo -e "$2 $R failed $N " | tee -a $LOG_FILE
   fi
 }
 
 for pkg in $@  # sudo 10-loops.sh nginx mysql
 do
-   dnf list installed $pkg  
+   dnf list installed $pkg   # to see 
    if [ $? -eq 0 ]; then
       echo "$pkg is already installed"
    else
