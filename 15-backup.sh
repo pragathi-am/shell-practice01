@@ -48,7 +48,8 @@ if [ ! -d $SOURCE_DIR ]; then
 fi
 
 if [ ! -d $DEST_DIR ]; then
-   echo "destination folder $DEST_DIR does not exists"
+   echo "destination folder $DEST_DIR does not exists hence creating it"
+    mkdir -p $DEST_DIR
    exit 1   
 fi
 
