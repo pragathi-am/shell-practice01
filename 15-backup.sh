@@ -49,7 +49,7 @@ fi
 
 if [ ! -d $DEST_DIR ]; then
    echo "destination folder $DEST_DIR does not exists hence creating it"
-    mkdir -p $DEST_DIR    
+   exit 1   
 fi
 
 # find the files 
@@ -62,6 +62,17 @@ log "backup started at"
 if [ -z "$FILES_TO_BACKUP" ]; then
    log "No files to backup"
 else
-   tar -czf $DEST_DIR/backup-$(date +%F).tar.gz $FILES_TO_BACKUP &>> $LOG_FILE
+   BACKUP_FILE="$DEST_DIR/backup-$(date +%F-%H-%M-%S).tar.gz"
+   tar -czf $BACKUP_FILE.tar.gz $FILES_TO_BACKUP &>> $LOG_FILE
    validate $? "backup creation" | tee -a $LOG_FILE
+   # delete archived files from source folder if archive successfully created
+   if [ -f $BACKUP_FILE ]; then
+      echo " archive file $BACKUP_FILE created successfully" | tee -a $LOG_FILE
+      log "deleting archived files from source folder $SOURCE_DIR"
+      rm -f $FILES_TO_BACKUP &>> $LOG_FILE
+      validate $? "deleting archived files" | tee -a $LOG_FILE
+    else
+        echo " archive file $BACKUP_FILE creation failed" | tee -a $LOG_FILE 
+    fi    
 fi
+
