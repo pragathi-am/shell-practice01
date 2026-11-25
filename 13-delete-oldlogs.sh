@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGS_DIR="/home/ec2-user/app-logs"
+LOGS_DIR="/home/ec2-user/app-log"
 LOGS_FILE="$LOGS_DIR/$0.log"
 
 # step1 : check directory exist or not 
