@@ -63,7 +63,7 @@ if [ -z "$FILES_TO_BACKUP" ]; then
    log "No files to backup"
 else
    BACKUP_FILE="$DEST_DIR/backup-$(date +%F-%H-%M-%S).tar.gz"
-   tar -czf $BACKUP_FILE.tar.gz $FILES_TO_BACKUP &>> $LOG_FILE
+   tar -czf $BACKUP_FILE $FILES_TO_BACKUP &>> $LOG_FILE
    validate $? "backup creation" | tee -a $LOG_FILE
    echo -e "backup file created is $BACKUP_FILE" | tee -a $LOG_FILE
    # delete archived files from source folder if archive successfully created
