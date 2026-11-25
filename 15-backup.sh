@@ -55,7 +55,7 @@ fi
 # find the files 
 
 FILES_TO_BACKUP=$(find $SOURCE_DIR -name "*.log*" -type f -mtime +$DAYS)                
-print("Files to backup are $FILES_TO_BACKUP") | tee -a $LOG_FILE
+echo -e "Files to backup are $FILES_TO_BACKUP" | tee -a $LOG_FILE
 
 log "backup started at" 
 
