@@ -49,8 +49,7 @@ fi
 
 if [ ! -d $DEST_DIR ]; then
    echo "destination folder $DEST_DIR does not exists hence creating it"
-    mkdir -p $DEST_DIR
-   exit 1   
+    mkdir -p $DEST_DIR    
 fi
 
 # find the files 
