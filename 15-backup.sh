@@ -65,6 +65,7 @@ else
    BACKUP_FILE="$DEST_DIR/backup-$(date +%F-%H-%M-%S).tar.gz"
    tar -czf $BACKUP_FILE.tar.gz $FILES_TO_BACKUP &>> $LOG_FILE
    validate $? "backup creation" | tee -a $LOG_FILE
+   echo -e "backup file created is $BACKUP_FILE" | tee -a $LOG_FILE
    # delete archived files from source folder if archive successfully created
    if [ -f $BACKUP_FILE ]; then
       echo " archive file $BACKUP_FILE created successfully" | tee -a $LOG_FILE
